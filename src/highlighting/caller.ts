@@ -1,6 +1,6 @@
 import { Caller } from '@readium/glue-rpc';
 import { EventHandlingMessage, IHighlightOptions, IHighlightDeletionOptions } from './interface';
-import { RangeData } from '../utilities/rangeData';
+import { RangeData } from '../utilities/rangeUtils';
 
 export class Highlighting extends Caller {
   public constructor(targetWindow: Window) {

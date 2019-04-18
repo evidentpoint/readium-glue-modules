@@ -1,7 +1,7 @@
 import { Callback, CallSource } from '@readium/glue-rpc';
 
 import { EventHandlingMessage, IAddEventListenerOptions } from '../eventHandling/interface';
-import { createRangeData } from '../utilities/rangeData';
+import { createRangeData } from '../utilities/rangeUtils';
 import { createSelectorFromStringArray, getTextSelector } from '../utilities/helpers';
 import { TargetableHandler } from '../targetableHandler';
 import { marshalObject } from '@readium/glue-rpc/lib/marshaling';

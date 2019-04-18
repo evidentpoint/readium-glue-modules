@@ -1,7 +1,7 @@
 import { Caller } from '@readium/glue-rpc';
 import { IAddEventListenerOptions } from '../eventHandling/interface';
 import { CFIEventHandlingMessage } from './interface';
-import { RangeData } from '../utilities/rangeData';
+import { RangeData } from '../utilities/rangeUtils';
 
 export class GenerateCFI extends Caller {
   public constructor(targetWindow: Window) {

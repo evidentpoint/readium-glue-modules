@@ -1,4 +1,3 @@
-
 export function createSelectorFromStringArray(array: string[]): string {
   let selector: string = '';
 

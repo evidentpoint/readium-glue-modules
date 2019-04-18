@@ -2,7 +2,7 @@ import { Callback, CallSource } from '@readium/glue-rpc';
 import * as EPUBcfi from 'readium-cfi-js';
 import { IAddEventListenerOptions } from '../eventHandling/interface';
 import { CFIEventHandlingMessage } from './interface';
-import { RangeData, createRangeFromRangeData } from '../utilities/rangeData';
+import { RangeData, createRangeFromRangeData } from '../utilities/rangeUtils';
 import { TargetableHandler } from '../targetableHandler';
 
 export class GenerateCFIHandler extends TargetableHandler {
