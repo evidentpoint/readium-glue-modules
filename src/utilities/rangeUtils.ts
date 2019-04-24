@@ -83,48 +83,14 @@ export function createRangeFromCFI(cfiParam: string): Range | null {
       target.endElement,
       target.endOffset || 0,
     );
-  // Use first word of cfi target element as a range
   } else {
     const target = EPUBcfi.Interpreter.getTargetElement(cfi, document);
-    const sentence = target[0].wholeText;
-    if (!sentence) {
-      return null;
-    }
-
-    // Get offset
-    const match = cfi.match(/:(\d*)/);
-    const targetOffset = match ? Number.parseInt(match[1], 10) : 0;
-    let startOffset = targetOffset === 0 ? 0 : -1;
-    let endOffset = -1;
-
-    // Find first word after offset
-    let charGroup = '';
-    let finishWord = false;
-    for (let i = 0; i < sentence.length; i += 1) {
-      const char = sentence[i];
-      const nextChar = sentence[i + 1];
-      if (i > targetOffset) {
-        finishWord = true;
-      }
-
-      if (nextChar === ' ' || nextChar === undefined) {
-        if (finishWord && charGroup.length !== 0) {
-          charGroup += char;
-          startOffset = i - (charGroup.length - 1);
-          endOffset = i + 1;
-          break;
-        }
-        charGroup = '';
-      } else {
-        charGroup += char;
-      }
-    }
-
-    range = createRange(
+    // Return a collapsed range
+    return createRange(
       target[0],
-      startOffset,
+      0,
       target[0],
-      endOffset,
+      0,
     );
   }
 
