@@ -1,3 +1,5 @@
+import * as EPUBcfi from 'readium-cfi-js';
+
 export function createSelectorFromStringArray(array: string[]): string {
   let selector: string = '';
 
@@ -15,6 +17,53 @@ export function createSelectorFromStringArray(array: string[]): string {
   }
 
   return selector;
+}
+
+export function createCFIFromRange(range: Range): string {
+  // Taken from cfi-navigation-logic
+  const classBlacklist = ['cfi-marker'];
+  const elementBlacklist: [] = [];
+  const idBlacklist = ['MathJax_Message', 'MathJax_SVG_Hidden'];
+  let cfi = '';
+
+  if (range.collapsed && range.startContainer.nodeType === Node.TEXT_NODE) {
+    cfi = EPUBcfi.Generator.generateCharacterOffsetCFIComponent(
+      range.startContainer,
+      range.startOffset,
+      classBlacklist,
+      elementBlacklist,
+      idBlacklist,
+    );
+
+    return cfi;
+  }
+
+  if (range.collapsed) {
+    let cfi = EPUBcfi.Generator.generateElementCFIComponent(
+      range.startContainer,
+      classBlacklist,
+      elementBlacklist,
+      idBlacklist,
+    );
+
+    if (cfi[0] === '!') {
+      cfi = cfi.substring(1);
+    }
+
+    return cfi;
+  }
+
+  cfi = EPUBcfi.Generator.generateRangeComponent(
+    range.startContainer,
+    range.startOffset,
+    range.endContainer,
+    range.endOffset,
+    classBlacklist,
+    elementBlacklist,
+    idBlacklist,
+  );
+
+  return cfi;
 }
 
 export function getTextSelector(text: Text): string {
