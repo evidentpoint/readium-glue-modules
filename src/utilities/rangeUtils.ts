@@ -68,9 +68,13 @@ export function createRange(
   return range;
 }
 
-export function getRangeFromCFI(cfi: string): Range | null {
+export function createRangeFromCFI(cfiParam: string): Range | null {
   let range;
-  // Highlight ranage
+  let cfi = cfiParam;
+  if (!cfi.includes('epubcfi')) {
+    cfi = `epubcfi(/99!${cfi})`;
+  }
+
   if (EPUBcfi.Interpreter.isRangeCfi(cfi)) {
     const target = EPUBcfi.Interpreter.getRangeTargetElements(cfi, document);
     range = createRange(

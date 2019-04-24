@@ -3,7 +3,7 @@ import { EventHandlingMessage, IHighlightOptions, IHighlightDeletionOptions } fr
 import {
   RangeData,
   createRangeFromRangeData,
-  getRangeFromCFI,
+  createRangeFromCFI,
 } from '../utilities/rangeUtils';
 import {
   createSelectorFromStringArray,
@@ -22,11 +22,10 @@ export class Highlighter extends TargetableHandler {
     rangeData: RangeData | string,
     options: IHighlightOptions,
   ): Promise<number> {
-    const cfi = `epubcfi(/99!${rangeData})`;
-
     let range;
     if (typeof rangeData === 'string') {
-      range = getRangeFromCFI(cfi);
+      const cfi = rangeData;
+      range = createRangeFromCFI(cfi);
     } else {
       range = createRangeFromRangeData(rangeData);
     }
