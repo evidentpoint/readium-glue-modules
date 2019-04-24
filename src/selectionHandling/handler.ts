@@ -1,7 +1,7 @@
 import { Callback, CallSource } from '@readium/glue-rpc';
 
 import { EventHandlingMessage, IAddEventListenerOptions } from '../eventHandling/interface';
-import { createRangeData } from '../utilities/rangeUtils';
+import { createRangeData, pluckTextFromElementArray } from '../utilities/rangeUtils';
 import { getTextSelector } from '../utilities/helpers';
 import { TargetableHandler } from '../targetableHandler';
 import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
@@ -38,8 +38,8 @@ export class SelectionHandler extends TargetableHandler {
           selection.addRange(range);
           rangeData = createRangeData(range);
 
-          const startTextNode = this._pluckTextFromElementArray(rangeData.startContainer);
-          const endTextNode = this._pluckTextFromElementArray(rangeData.endContainer);
+          const startTextNode = pluckTextFromElementArray(rangeData.startContainer);
+          const endTextNode = pluckTextFromElementArray(rangeData.endContainer);
           startText = startTextNode ? getTextSelector(startTextNode) : null;
           endText = endTextNode ? getTextSelector(endTextNode) : null;
         }
@@ -71,16 +71,5 @@ export class SelectionHandler extends TargetableHandler {
 
   private async _removeEventListener({  }: Callback, id: number): Promise<void> {
     this.removeEventListeners(id);
-  }
-
-  private _pluckTextFromElementArray(elements: Element[]): Text | null {
-    let text = null;
-    elements.forEach((element: Element, index: number) => {
-      if (element.nodeType === Node.TEXT_NODE) {
-        text =  elements.splice(index, 1)[0];
-      }
-    });
-
-    return text;
   }
 }

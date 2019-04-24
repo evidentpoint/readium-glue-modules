@@ -130,3 +130,14 @@ export function createRangeFromCFI(cfiParam: string): Range | null {
 
   return range || null;
 }
+
+export function pluckTextFromElementArray(elements: Element[]): Text | null {
+  let text = null;
+  elements.forEach((element: Element, index: number) => {
+    if (element.nodeType === Node.TEXT_NODE) {
+      text =  elements.splice(index, 1)[0];
+    }
+  });
+
+  return text;
+}
