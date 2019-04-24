@@ -5,3 +5,4 @@ export * from './regionHandling/caller';
 export * from './linkHandling/caller';
 export * from './generateCFI/caller';
 export * from './highlighting/caller';
+export * from './elementInfo/caller';

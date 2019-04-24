@@ -2,7 +2,9 @@ import * as EPUBcfi from 'readium-cfi-js';
 import {
   getElementPath,
   getElementFromStringArray,
+  getTextSelector,
 } from './helpers';
+import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
 
 export interface RangeData {
   startOffset: number;
@@ -25,6 +27,21 @@ export function createRangeData(range: Range): RangeData {
   };
 
   return rangeData;
+}
+
+// Turn rangeData into an object that can be transfered to another document
+export function createMarshaledRangeData(rangeData: RangeData): any {
+  const startTextNode = pluckTextFromElementArray(rangeData.startContainer);
+  const endTextNode = pluckTextFromElementArray(rangeData.endContainer);
+  const marshaledRangeData = marshalObject(rangeData);
+  if (startTextNode) {
+    marshaledRangeData.startContainer.push(getTextSelector(startTextNode));
+  }
+  if (endTextNode) {
+    marshaledRangeData.endContainer.push(getTextSelector(endTextNode));
+  }
+
+  return marshaledRangeData;
 }
 
 export function createRangeFromRangeData(rangeData: RangeData): Range {
