@@ -14,7 +14,7 @@ export class GenerateCFI extends Caller {
     options?: IAddEventListenerOptions,
   ): Promise<string> {
     return this.call(CFIEventHandlingMessage.FromRange, [rangeData, options], (event) => {
-      listener(event);
+      listener(event[0]);
     });
   }
 }
