@@ -1,13 +1,30 @@
 {
-  "name": "@readium/glue-shared",
-  "version": "1.1.0",
+  "name": "@evidentpoint/glue-modules",
+  "version": "1.0.0",
   "files": [
     "lib"
   ],
-  "dependencies": {
-    "@readium/glue-rpc": "^1.1.0"
-  },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "@readium/glue-rpc": "^1.1.0"
+  },
+  "devDependencies": {
+    "@readium/glue-rpc": "^1.1.0",
+    "prettier": "^1.16.4",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.14.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.3.4000"
+  },
+  "scripts": {
+    "lint": "tslint --project . --config tslint.json -t stylish",
+    "format": "prettier --config .prettierrc --ignore-path .gitignore --write 'lib/**/*.ts'",
+    "clean": "rimraf lib *.tsbuildinfo",
+    "build": "tsc",
+    "dist": "npm run clean && npm run build",
+    "prepublishOnly": "npm run lint && npm run dist"
   }
 }
