@@ -4,6 +4,8 @@
   "files": [
     "lib"
   ],
+  "main": "lib/callers.js",
+  "typings": "lib/callers.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -21,7 +23,7 @@
   },
   "scripts": {
     "lint": "tslint --project . --config tslint.json -t stylish",
-    "format": "prettier --config .prettierrc --ignore-path .gitignore --write 'lib/**/*.ts'",
+    "format": "prettier --config .prettierrc --ignore-path .gitignore --write 'src/**/*.ts'",
     "clean": "rimraf lib *.tsbuildinfo",
     "build": "tsc",
     "dist": "npm run clean && npm run build",
