@@ -1,13 +1,7 @@
 import { Callback, CallSource } from '@readium/glue-rpc';
 import { EventHandlingMessage, IHighlightOptions, IHighlightDeletionOptions } from './interface';
-import {
-  RangeData,
-  createRangeFromRangeData,
-  createRangeFromCFI,
-} from '../utilities/rangeUtils';
-import {
-  createSelectorFromStringArray,
-} from '../utilities/helpers';
+import { RangeData, createRangeFromRangeData, createRangeFromCFI } from '../utilities/rangeUtils';
+import { createSelectorFromStringArray } from '../utilities/helpers';
 import { TargetableHandler } from '../targetableHandler';
 
 export class Highlighter extends TargetableHandler {

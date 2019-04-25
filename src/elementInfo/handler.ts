@@ -15,8 +15,10 @@ export class ElementInfoService extends TargetableHandler {
   constructor(source: CallSource) {
     super(source);
     source.bind(ElementInfoEventHandlingMessage.GetNextTextNodeCFI, this._getNextTextNodeCFI);
-// tslint:disable-next-line: max-line-length
-    source.bind(ElementInfoEventHandlingMessage.GetNextTextNodeRangeData, this._getNextTextNodeRangeData);
+    source.bind(
+      ElementInfoEventHandlingMessage.GetNextTextNodeRangeData,
+      this._getNextTextNodeRangeData,
+    );
     source.bind(ElementInfoEventHandlingMessage.GetWordCFI, this._getWordCFI);
     source.bind(ElementInfoEventHandlingMessage.GetWordRangeData, this._getWordRangeData);
   }
@@ -157,7 +159,7 @@ export class ElementInfoService extends TargetableHandler {
 
   private _getStartOffset(rangeDataOrCFI: RangeData | string): number {
     // Return the start offset for a CFI
-    if (typeof(rangeDataOrCFI) === 'string') {
+    if (typeof rangeDataOrCFI === 'string') {
       const match = rangeDataOrCFI.match(/:(\d*)/);
       return match ? Number.parseInt(match[1], 10) : 0;
     }
@@ -166,8 +168,10 @@ export class ElementInfoService extends TargetableHandler {
     return rangeDataOrCFI.startOffset;
   }
 
-  private _findNextWordAfterOffset(sentence: string, targetOffset: number = 0)
-  : {startOffset: number, endOffset: number, text: string} {
+  private _findNextWordAfterOffset(
+    sentence: string,
+    targetOffset: number = 0,
+  ): { startOffset: number; endOffset: number; text: string } {
     // Find first word after offset
     let text = '';
     let finishWord = false;
@@ -206,7 +210,7 @@ export class ElementInfoService extends TargetableHandler {
     // If start container is body, we don't need to search any parents
     if (startContainer.nodeName.toLowerCase() === 'body') {
       wantedElement = this._findTextNode(startContainer, options);
-    // Otherwise, allow the search to travel all the way up to the body
+      // Otherwise, allow the search to travel all the way up to the body
     } else {
       // Check if starting container is already a desired text node
       if (options.includeFirstNode && this._isTextNodeWanted(startContainer, options)) {
@@ -217,12 +221,12 @@ export class ElementInfoService extends TargetableHandler {
       // If no text node is found, expand search to siblings, and then parents.
       if (!wantedElement) {
         wantedElement = this._searchAllParentsForElement(startContainer, (element: Node) => {
-          return <Text> this._findTextNode(element, options);
+          return <Text>this._findTextNode(element, options);
         });
       }
     }
 
-    return <Text> wantedElement;
+    return <Text>wantedElement;
   }
 
   private _searchAllParentsForElement(
@@ -241,7 +245,7 @@ export class ElementInfoService extends TargetableHandler {
       startIndex += 1;
     }
     for (let i = startIndex; i < siblings.length; i += 1) {
-      const element = <Element> getWantedElement(siblings[i]);
+      const element = <Element>getWantedElement(siblings[i]);
       if (element) {
         wantedElement = element;
         break;
@@ -249,7 +253,7 @@ export class ElementInfoService extends TargetableHandler {
     }
 
     if (!wantedElement && canGetSiblings) {
-      return this._searchAllParentsForElement(<Element> parentNode, getWantedElement, true);
+      return this._searchAllParentsForElement(<Element>parentNode, getWantedElement, true);
     }
 
     return wantedElement;
@@ -260,13 +264,13 @@ export class ElementInfoService extends TargetableHandler {
     let startContainer: Element | null = document.body;
 
     // Get starting element via CFI
-    if (typeof(rangeDataOrCFI) === 'string' && rangeDataOrCFI.length > 0) {
+    if (typeof rangeDataOrCFI === 'string' && rangeDataOrCFI.length > 0) {
       const range = createRangeFromCFI(rangeDataOrCFI);
-      startContainer = range ? <Element> range.startContainer : null;
-    // Get starting element via RangeData
-    } else if (typeof(rangeDataOrCFI) === 'object') {
+      startContainer = range ? <Element>range.startContainer : null;
+      // Get starting element via RangeData
+    } else if (typeof rangeDataOrCFI === 'object') {
       const range = createRangeFromRangeData(rangeDataOrCFI);
-      startContainer = range ? <Element> range.startContainer : null;
+      startContainer = range ? <Element>range.startContainer : null;
     }
 
     return startContainer;
@@ -282,7 +286,7 @@ export class ElementInfoService extends TargetableHandler {
         const isWanted = this._isTextNodeWanted(child, options);
 
         if (isWanted) {
-          wantedText = <Text> child;
+          wantedText = <Text>child;
           break;
         }
       }

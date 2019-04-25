@@ -15,17 +15,13 @@ export class LinkHandler extends TargetableHandler {
     return (event) => {
       const path = eventPath(event);
 
-      let i = 0;
-      const length = path.length;
-      let anchor: HTMLAnchorElement | null = null;
-      // tslint:disable-next-line:no-increment-decrement
-      for (i; i < length; i++) {
-        if (path[i].tagName === 'a') anchor = path[i];
-      }
-      if (!anchor) return;
+      const anchor: HTMLAnchorElement = path.find((element) => {
+        return element.tagName.toLowerCase() === 'a';
+      });
 
-      const href = anchor && anchor.href;
-      if (!href) return;
+      if (!anchor || !anchor.href) {
+        return;
+      }
 
       event.preventDefault();
       event.stopPropagation();

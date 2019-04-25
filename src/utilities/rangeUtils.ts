@@ -1,9 +1,5 @@
 import * as EPUBcfi from 'readium-cfi-js';
-import {
-  getElementPath,
-  getElementFromStringArray,
-  getTextSelector,
-} from './helpers';
+import { getElementPath, getElementFromStringArray, getTextSelector } from './helpers';
 import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
 
 export interface RangeData {
@@ -103,12 +99,7 @@ export function createRangeFromCFI(cfiParam: string): Range | null {
   } else {
     const target = EPUBcfi.Interpreter.getTargetElement(cfi, document);
     // Return a collapsed range
-    return createRange(
-      target[0],
-      0,
-      target[0],
-      0,
-    );
+    return createRange(target[0], 0, target[0], 0);
   }
 
   return range || null;
@@ -118,7 +109,7 @@ export function pluckTextFromElementArray(elements: Element[]): Text | null {
   let text = null;
   elements.forEach((element: Element, index: number) => {
     if (element.nodeType === Node.TEXT_NODE) {
-      text =  elements.splice(index, 1)[0];
+      text = elements.splice(index, 1)[0];
     }
   });
 

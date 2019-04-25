@@ -12,10 +12,13 @@ export class ElementInfo extends Caller {
     listener: EventListener,
     options: ITextNodeOptions = {},
   ): Promise<string> {
-    return this.call(ElementInfoEventHandlingMessage.GetNextTextNodeCFI,
-      [rangeDataOrCFI, options], (event) => {
+    return this.call(
+      ElementInfoEventHandlingMessage.GetNextTextNodeCFI,
+      [rangeDataOrCFI, options],
+      (event) => {
         listener(event[0]);
-      });
+      },
+    );
   }
 
   public async getNextTextNodeRangeData(
@@ -23,10 +26,13 @@ export class ElementInfo extends Caller {
     listener: EventListener,
     options: ITextNodeOptions = {},
   ): Promise<string> {
-    return this.call(ElementInfoEventHandlingMessage.GetNextTextNodeRangeData,
-      [rangeDataOrCFI, options], (event) => {
+    return this.call(
+      ElementInfoEventHandlingMessage.GetNextTextNodeRangeData,
+      [rangeDataOrCFI, options],
+      (event) => {
         listener(event[0]);
-      });
+      },
+    );
   }
 
   public async getWordCFI(
@@ -34,10 +40,13 @@ export class ElementInfo extends Caller {
     listener: EventListener,
     options: ITextNodeOptions = {},
   ): Promise<string> {
-    return this.call(ElementInfoEventHandlingMessage.GetWordCFI,
-      [rangeDataOrCFI, options], (event) => {
+    return this.call(
+      ElementInfoEventHandlingMessage.GetWordCFI,
+      [rangeDataOrCFI, options],
+      (event) => {
         listener(event[0]);
-      });
+      },
+    );
   }
 
   public async getWordRangeData(
@@ -45,9 +54,12 @@ export class ElementInfo extends Caller {
     listener: EventListener,
     options: ITextNodeOptions = {},
   ): Promise<string> {
-    return this.call(ElementInfoEventHandlingMessage.GetWordRangeData,
-      [rangeDataOrCFI, options], (event) => {
+    return this.call(
+      ElementInfoEventHandlingMessage.GetWordRangeData,
+      [rangeDataOrCFI, options],
+      (event) => {
         listener(event[0]);
-      });
+      },
+    );
   }
 }

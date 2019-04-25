@@ -71,9 +71,9 @@ export class RegionHandler extends TargetableHandler {
 
       let shouldCallback = options.withinRegion;
       if (eventType === 'mouseenter') {
-        shouldCallback = options.wasWithinRegion === false && options.withinRegion === true;
+        shouldCallback = !options.wasWithinRegion && options.withinRegion;
       } else if (eventType === 'mouseout') {
-        shouldCallback = options.wasWithinRegion === true && options.withinRegion === false;
+        shouldCallback = !!options.wasWithinRegion && !options.withinRegion;
       }
 
       if (shouldCallback) {
