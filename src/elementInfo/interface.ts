@@ -1,8 +1,8 @@
 export enum ElementInfoEventHandlingMessage {
   GetNextTextNodeCFI = 'GET_NEXT_TEXT_NODE_CFI',
   GetNextTextNodeRangeData = 'GET_NEXT_TEXT_NODE_RANGE_DATA',
-  GetNextWordCFI = 'GET_NEXT_WORD_CFI',
-  GetNextWordRangeData = 'GET_NEXT_WORD_RANGE_DATA',
+  GetWordCFI = 'GET_WORD_CFI',
+  GetWordRangeData = 'GET_WORD_RANGE_DATA',
 }
 
 export interface ITextNodeOptions {

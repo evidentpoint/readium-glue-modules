@@ -17,8 +17,8 @@ export class ElementInfoService extends TargetableHandler {
     source.bind(ElementInfoEventHandlingMessage.GetNextTextNodeCFI, this._getNextTextNodeCFI);
 // tslint:disable-next-line: max-line-length
     source.bind(ElementInfoEventHandlingMessage.GetNextTextNodeRangeData, this._getNextTextNodeRangeData);
-    source.bind(ElementInfoEventHandlingMessage.GetNextWordCFI, this._getNextWordCFI);
-    source.bind(ElementInfoEventHandlingMessage.GetNextWordRangeData, this._getNextWordRangeData);
+    source.bind(ElementInfoEventHandlingMessage.GetWordCFI, this._getWordCFI);
+    source.bind(ElementInfoEventHandlingMessage.GetWordRangeData, this._getWordRangeData);
   }
 
   private async _getNextTextNodeCFI(
@@ -61,7 +61,7 @@ export class ElementInfoService extends TargetableHandler {
     return callback(marshaledRangeData);
   }
 
-  private async _getNextWordCFI(
+  private async _getWordCFI(
     callback: Callback,
     rangeDataOrCFI: RangeData | string,
     options: ITextNodeOptions,
@@ -76,7 +76,7 @@ export class ElementInfoService extends TargetableHandler {
     return callback(cfi);
   }
 
-  private async _getNextWordRangeData(
+  private async _getWordRangeData(
     callback: Callback,
     rangeDataOrCFI: RangeData | string,
     options: ITextNodeOptions,

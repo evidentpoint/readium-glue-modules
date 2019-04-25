@@ -29,23 +29,23 @@ export class ElementInfo extends Caller {
       });
   }
 
-  public async getNextWordCFI(
+  public async getWordCFI(
     rangeDataOrCFI: RangeData | string,
     listener: EventListener,
     options: ITextNodeOptions = {},
   ): Promise<string> {
-    return this.call(ElementInfoEventHandlingMessage.GetNextWordCFI,
+    return this.call(ElementInfoEventHandlingMessage.GetWordCFI,
       [rangeDataOrCFI, options], (event) => {
         listener(event[0]);
       });
   }
 
-  public async getNextWordRangeData(
+  public async getWordRangeData(
     rangeDataOrCFI: RangeData | string,
     listener: EventListener,
     options: ITextNodeOptions = {},
   ): Promise<string> {
-    return this.call(ElementInfoEventHandlingMessage.GetNextWordRangeData,
+    return this.call(ElementInfoEventHandlingMessage.GetWordRangeData,
       [rangeDataOrCFI, options], (event) => {
         listener(event[0]);
       });
