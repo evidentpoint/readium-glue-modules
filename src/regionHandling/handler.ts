@@ -5,7 +5,7 @@ import {
   RegionEventHandlingMessage,
   Region,
 } from './interface';
-import { marshalObject } from '../../../rpc/lib/marshaling';
+import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
 import { TargetableHandler } from '../targetableHandler';
 
 interface EventData {
