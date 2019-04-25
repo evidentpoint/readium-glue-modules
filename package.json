@@ -1,5 +1,5 @@
 {
-  "name": "@evidentpoint/glue-modules",
+  "name": "@evidentpoint/readium-glue-modules",
   "version": "1.0.0",
   "files": [
     "lib"
