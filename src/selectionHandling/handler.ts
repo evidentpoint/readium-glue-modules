@@ -1,10 +1,10 @@
-import { Callback, CallSource } from '@readium/glue-rpc';
+import { Callback, CallSource } from '@readium/glue-shared';
 
 import { EventHandlingMessage, IAddEventListenerOptions } from '../eventHandling/interface';
 import { createRangeData, pluckTextFromElementArray } from '../utilities/rangeUtils';
 import { getTextSelector } from '../utilities/helpers';
 import { TargetableHandler } from '../targetableHandler';
-import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
+import { marshalObject } from '@readium/glue-shared/lib/marshaling';
 
 export class SelectionHandler extends TargetableHandler {
   constructor(source: CallSource) {

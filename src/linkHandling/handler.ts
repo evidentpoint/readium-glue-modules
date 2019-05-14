@@ -1,6 +1,6 @@
-import { Callback, CallSource } from '@readium/glue-rpc';
+import { Callback, CallSource } from '@readium/glue-shared';
 import { EventHandlingMessage, IAddEventListenerOptions } from '../eventHandling/interface';
-import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
+import { marshalObject } from '@readium/glue-shared/lib/marshaling';
 import { eventPath } from '../utilities/helpers';
 import { TargetableHandler } from '../targetableHandler';
 

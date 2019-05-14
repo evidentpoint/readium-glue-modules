@@ -1,6 +1,6 @@
 import * as EPUBcfi from 'readium-cfi-js';
 import { getElementPath, getElementFromStringArray, getTextSelector } from './helpers';
-import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
+import { marshalObject } from '@readium/glue-shared/lib/marshaling';
 
 export interface RangeData {
   startOffset: number;

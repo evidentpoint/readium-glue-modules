@@ -1,4 +1,4 @@
-import { Callback, CallSource } from '@readium/glue-rpc';
+import { Callback, CallSource } from '@readium/glue-shared';
 import { IAddEventListenerOptions } from '../eventHandling/interface';
 import { CFIEventHandlingMessage } from './interface';
 import { RangeData, createRangeFromRangeData } from '../utilities/rangeUtils';

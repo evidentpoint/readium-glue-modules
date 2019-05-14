@@ -1,6 +1,6 @@
-import { Service, CallSource } from '@readium/glue-rpc';
+import { Service, CallSource } from '@readium/glue-shared';
 
-import { resolveEventTargetSelector } from '@readium/glue-rpc/lib/util';
+import { resolveEventTargetSelector } from '@readium/glue-shared/lib/util';
 
 export type EventListenerGenerator = (target: EventTarget) => EventListener;
 

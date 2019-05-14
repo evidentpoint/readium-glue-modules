@@ -1,4 +1,4 @@
-import { Callback, CallSource } from '@readium/glue-rpc';
+import { Callback, CallSource } from '@readium/glue-shared';
 import { ElementInfoEventHandlingMessage, ITextNodeOptions } from './interface';
 import {
   RangeData,

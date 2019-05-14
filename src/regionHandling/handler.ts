@@ -1,11 +1,11 @@
-import { Callback, CallSource } from '@readium/glue-rpc';
+import { Callback, CallSource } from '@readium/glue-shared';
 import {
   IAddRegionListenerOptions,
   RegionScope,
   RegionEventHandlingMessage,
   Region,
 } from './interface';
-import { marshalObject } from '@readium/glue-rpc/lib/marshaling';
+import { marshalObject } from '@readium/glue-shared/lib/marshaling';
 import { TargetableHandler } from '../targetableHandler';
 
 interface EventData {
