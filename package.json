@@ -10,11 +10,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@readium/glue-rpc": "^1.1.0"
+    "@readium/glue-rpc": "^1.3.0"
   },
   "devDependencies": {
-    "@readium/glue-rpc": "^1.1.0",
-    "@readium/glue-shared": "^1.1.0",
+    "@readium/glue-rpc": "^1.3.0",
+    "@readium/glue-shared": "^1.3.0",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
     "tslint": "^5.14.0",
