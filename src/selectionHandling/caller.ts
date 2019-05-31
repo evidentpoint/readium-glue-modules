@@ -2,10 +2,6 @@ import { Caller } from '@readium/glue-rpc';
 import { EventHandlingMessage, IAddEventListenerOptions } from '../eventHandling/interface';
 
 export class SelectionHandling extends Caller {
-  public constructor(targetWindow: Window) {
-    super('selection-handling', targetWindow);
-  }
-
   public async addEventListener(
     target: string,
     listener: EventListener,
