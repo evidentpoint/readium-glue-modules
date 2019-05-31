@@ -3,10 +3,6 @@ import { ITextNodeOptions, ElementInfoEventHandlingMessage } from './interface';
 import { RangeData } from '../utilities/rangeUtils';
 
 export class ElementInfo extends Caller {
-  public constructor(targetWindow: Window) {
-    super('elementInfo', targetWindow);
-  }
-
   public async getNextTextNodeCFI(
     rangeDataOrCFI: RangeData | string,
     listener: EventListener,

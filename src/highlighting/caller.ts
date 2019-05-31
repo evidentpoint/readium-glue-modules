@@ -3,10 +3,6 @@ import { EventHandlingMessage, IHighlightOptions, IHighlightDeletionOptions } fr
 import { RangeData } from '../utilities/rangeUtils';
 
 export class Highlighting extends Caller {
-  public constructor(targetWindow: Window) {
-    super('highlighting', targetWindow);
-  }
-
   public async createHighlight(
     rangeDataOrCFI: RangeData | string,
     options?: IHighlightOptions,

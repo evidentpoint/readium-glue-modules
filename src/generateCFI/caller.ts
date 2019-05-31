@@ -4,10 +4,6 @@ import { CFIEventHandlingMessage } from './interface';
 import { RangeData } from '../utilities/rangeUtils';
 
 export class GenerateCFI extends Caller {
-  public constructor(targetWindow: Window) {
-    super('generateCFI', targetWindow);
-  }
-
   public async fromRangeData(
     rangeData: RangeData,
     listener: EventListener,

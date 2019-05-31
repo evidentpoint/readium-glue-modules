@@ -1,11 +1,10 @@
-import { Callback, CallSource } from '@readium/glue-shared';
+import { Callback, CallSource, EventListenerService } from '@readium/glue-shared';
 import { IAddEventListenerOptions } from '../eventHandling/interface';
 import { CFIEventHandlingMessage } from './interface';
 import { RangeData, createRangeFromRangeData } from '../utilities/rangeUtils';
-import { TargetableHandler } from '../targetableHandler';
 import { createCFIFromRange } from '../utilities/helpers';
 
-export class GenerateCFIHandler extends TargetableHandler {
+export class GenerateCFIService extends EventListenerService {
   constructor(source: CallSource) {
     super(source);
     source.bind(CFIEventHandlingMessage.FromRange, this._fromRangeData);

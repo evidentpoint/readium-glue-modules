@@ -1,4 +1,4 @@
-import { Callback, CallSource } from '@readium/glue-shared';
+import { Callback, CallSource, EventListenerService } from '@readium/glue-shared';
 import {
   IAddRegionListenerOptions,
   RegionScope,
@@ -6,7 +6,6 @@ import {
   Region,
 } from './interface';
 import { marshalObject } from '@readium/glue-shared/lib/marshaling';
-import { TargetableHandler } from '../targetableHandler';
 
 interface EventData {
   clientX: number;
@@ -17,7 +16,7 @@ interface EventData {
   pageY: number;
 }
 
-export class RegionHandler extends TargetableHandler {
+export class RegionHandlingService extends EventListenerService {
   private debug: boolean;
   private registeredOptions: { [id: number]: IAddRegionListenerOptions };
 

@@ -1,10 +1,9 @@
-import { Callback, CallSource } from '@readium/glue-shared';
+import { Callback, CallSource, EventListenerService } from '@readium/glue-shared';
 import { EventHandlingMessage, IHighlightOptions, IHighlightDeletionOptions } from './interface';
 import { RangeData, createRangeFromRangeData, createRangeFromCFI } from '../utilities/rangeUtils';
 import { createSelectorFromStringArray } from '../utilities/helpers';
-import { TargetableHandler } from '../targetableHandler';
 
-export class Highlighter extends TargetableHandler {
+export class HighlightingService extends EventListenerService {
   constructor(source: CallSource) {
     super(source);
     source.bind(EventHandlingMessage.CreateHighlight, this._createHighlight);

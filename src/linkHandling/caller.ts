@@ -2,12 +2,6 @@ import { Caller } from '@readium/glue-rpc';
 import { EventHandlingMessage, IAddEventListenerOptions } from '../eventHandling/interface';
 
 export class LinkHandling extends Caller {
-  public readonly typeName: string = 'LinkHandling';
-
-  public constructor(targetWindow: Window) {
-    super('link-handling', targetWindow);
-  }
-
   public async addEventListener(
     eventType: string,
     listener: EventListener,

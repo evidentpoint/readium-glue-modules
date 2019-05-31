@@ -1,4 +1,4 @@
-import { Callback, CallSource } from '@readium/glue-shared';
+import { Callback, CallSource, EventListenerService } from '@readium/glue-shared';
 import { ElementInfoEventHandlingMessage, ITextNodeOptions } from './interface';
 import {
   RangeData,
@@ -8,10 +8,9 @@ import {
   createRangeData,
   createMarshaledRangeData,
 } from '../utilities/rangeUtils';
-import { TargetableHandler } from '../targetableHandler';
 import { createCFIFromRange } from '../utilities/helpers';
 
-export class ElementInfoService extends TargetableHandler {
+export class ElementInfoService extends EventListenerService {
   constructor(source: CallSource) {
     super(source);
     source.bind(ElementInfoEventHandlingMessage.GetNextTextNodeCFI, this._getNextTextNodeCFI);

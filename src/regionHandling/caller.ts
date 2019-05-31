@@ -2,10 +2,6 @@ import { Caller } from '@readium/glue-rpc';
 import { Region, IAddRegionListenerOptions, RegionEventHandlingMessage } from './interface';
 
 export class RegionHandling extends Caller {
-  public constructor(targetWindow: Window) {
-    super('region-handling', targetWindow);
-  }
-
   public async addEventListener(
     eventType: string,
     region: Region,
