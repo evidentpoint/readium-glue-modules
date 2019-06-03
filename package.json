@@ -9,6 +9,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "readium-cfi-js": "^1.0.0-alpha.1"
+  },
   "peerDependencies": {
     "@readium/glue-rpc": "^1.3.0"
   },
@@ -17,6 +20,9 @@
     "@readium/glue-shared": "^1.3.0",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
+    "rollup": "^1.11.3",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-node-resolve": "^4.0.1",
     "tslint": "^5.14.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-eslint-rules": "^5.4.0",
@@ -26,7 +32,7 @@
     "lint": "tslint --project . --config tslint.json -t stylish",
     "format": "prettier --config .prettierrc --ignore-path .gitignore --write 'src/**/*.ts'",
     "clean": "rimraf lib *.tsbuildinfo",
-    "build": "tsc",
+    "build": "tsc && rollup -c",
     "dist": "npm run clean && npm run build",
     "prepublishOnly": "npm run lint && npm run dist"
   }
