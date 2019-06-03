@@ -2,7 +2,8 @@
   "name": "@evidentpoint/readium-glue-modules",
   "version": "1.2.2",
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "main": "lib/callers.js",
   "typings": "lib/callers.d.ts",
